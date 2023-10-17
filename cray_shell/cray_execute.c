@@ -1,8 +1,5 @@
 #include "cray_shell.h"
-/*
-*Author: Fraanklin Chombaa & Leonard Ketere
-*This prototype is to allow the user to input command
-*/
+
 void run_command(const char *command) {
     pid_t child_pid;
     char *args[2];
