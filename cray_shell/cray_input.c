@@ -9,12 +9,16 @@
  * This function reads a line of text from standard input and stores it in the
  * provided buffer, removing the trailing newline character if present.
  */
-void cray_input(char *command, size_t size) {
-	if (fgets(command, size, stdin) == NULL) {
-		if (feof(stdin)) {
+void cray_input(char *command, size_t size)
+{
+	if (fgets(command, size, stdin) == NULL)
+	  {
+		if (feof(stdin))
+		  {
 			cray_print("\n");
 			exit(EXIT_SUCCESS);
-		} else {
+		} else
+		  {
 			perror("fgets");
 			exit(EXIT_FAILURE);
 		}
