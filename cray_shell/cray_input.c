@@ -5,6 +5,7 @@
  * @command: The buffer to store the input text
  * @size: The size of the buffer
  *
+ * Description:
  * This function reads a line of text from standard input and stores it in the
  * provided buffer, removing the trailing newline character if present.
  */
