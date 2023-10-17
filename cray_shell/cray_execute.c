@@ -12,9 +12,10 @@ void run_command(const char *command) {
         perror("fork");
         exit(EXIT_FAILURE);
     } else if (child_pid == 0) {
-        /* Child process */
-
-        /* Construct the full path to the command */
+/*
+ *Child process
+ *Construct the full path to the command
+ */
         char command_path[256];
         snprintf(command_path, sizeof(command_path), "/bin/%s", command);
 
@@ -23,7 +24,7 @@ void run_command(const char *command) {
         perror("execve");
         exit(EXIT_FAILURE);
     } else {
-        /* Parent process */
+/* Parent process */
         wait(NULL);
     }
 }
