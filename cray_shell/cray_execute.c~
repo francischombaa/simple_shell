@@ -1,0 +1,50 @@
+#include "cray_shell.h"
+/*
+*Author: Fraanklin Chombaa & Leonard Ketere
+*this prorotype is used to execute commands in the shell
+*/
+void run_command(const char *command) {
+    pid_t child_pid;
+    char *token;
+    char *args[64];  /*Assuming a maximum of 64 arguments*/
+
+    /*Tokenize the command line into arguments*/
+    token = strtok((char *)command, " ");
+    int arg_count = 0;
+    while (token != NULL) {
+        args[arg_count] = token;
+        arg_count++;
+
+        /*
+        *Get the next token
+        */
+        token = strtok(NULL, " ");
+    }
+    args[arg_count] = NULL;
+
+    child_pid = fork();
+
+    if (child_pid == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    } else if (child_pid == 0) {
+        /*
+        *Child process
+        *Construct the full path to the command
+        */
+        char command_path[256];
+        snprintf(command_path, sizeof(command_path), "/bin/%s", args[0]);
+
+        execve(command_path, args, NULL);
+
+        perror("execve");
+        exit(EXIT_FAILURE);
+    } else {
+        /*
+        *
+        *Parent process
+        *
+        * */
+        wait(NULL);
+    }
+}
