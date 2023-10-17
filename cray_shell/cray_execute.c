@@ -1,11 +1,14 @@
 #include "cray_shell.h"
 
+/**
+ * run_command - Execute a shell command.
+ * @command: The command to execute.
+ */
 void run_command(const char *command)
 {
 	pid_t child_pid;
 	char *args[2];
 	args[0] = (char *)command;
-	
 	args[1] = NULL;
 
 	child_pid = fork();
