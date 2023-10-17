@@ -9,6 +9,7 @@ void run_command(const char *command)
 	pid_t child_pid;
 	char *args[2];
 	args[0] = (char *)command;
+	/*line after declaration*/
 	args[1] = NULL;
 
 	child_pid = fork();
@@ -24,7 +25,7 @@ void run_command(const char *command)
 		/* Construct the full path to the command */
 		char command_path[256];
 		snprintf(command_path, sizeof(command_path), "/bin/%s", command);
-
+		/*line after declaration*/
 		execve(command_path, args, NULL);
 
 		perror("execve");
