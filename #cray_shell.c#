@@ -1,0 +1,19 @@
+#include "cray_shell.h"
+
+/**
+ * main - Main entry point of the shell.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char command[108];
+
+    while (1)
+    {
+        cray_prompt();
+        cray_input(command, sizeof(command));
+        run_command(command);
+    }
+    return (0);
+}

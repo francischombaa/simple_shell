@@ -23,7 +23,4 @@ void cray_print(const char *crayprint);
 void cray_input(char *command, size_t size);
 void run_command(const char *command);
 
-
-
-
 #endif /*SHELL_H*/

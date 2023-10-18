@@ -17,7 +17,8 @@ void cray_input(char *command, size_t size)
 		{
 			cray_print("\n");
 			exit(EXIT_SUCCESS);
-		} else
+		}
+		else
 		{
 			perror("fgets");
 			exit(EXIT_FAILURE);
